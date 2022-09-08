@@ -1,0 +1,29 @@
+{
+  "name": "image-uploader-challange",
+  "version": "1.0.0",
+  "description": "image uploader server side",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgeromarrr/image-uploader-challange.git"
+  },
+  "author": "Romar George Doinog",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/georgeromarrr/image-uploader-challange/issues"
+  },
+  "homepage": "https://github.com/georgeromarrr/image-uploader-challange#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
