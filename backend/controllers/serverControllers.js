@@ -33,7 +33,18 @@ const createImage = asyncHandler( async (req, res) => {
 // routes: PUT /api/images/:id
 // access: Private
 const updateImage = asyncHandler( async (req, res) => {
-  res.status(200).json({message: `Update Image ${req.params.id}`})
+  const image = await Image.findById(req.params.id)
+
+  if(!image) {
+    res.status(400)
+    throw new Error('Image does not exist')
+  }
+
+  const imageUpdated = await Image.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
+  
+  res.status(200).json(imageUpdated)
 })
 
 // description: DELETE Image detail
