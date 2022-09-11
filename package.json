@@ -2,10 +2,11 @@
   "name": "image-uploader-challange",
   "version": "1.0.0",
   "description": "image uploader server side",
-  "main": "server.js",
-  "engines":{ "node": "14.x"},
+  "main": "index.js",
+  "type": "module",
+  "engines": { "node": "14.x"},
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
