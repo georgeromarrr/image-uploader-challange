@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
   getImage,
+  getImageId,
   createImage,
   updateImage,
   deleteImage
@@ -9,7 +10,7 @@ const {
 
 
 router.route('/').get(getImage).post(createImage)
-router.route('/:id').put(updateImage).delete(deleteImage)
+router.route('/:id').get(getImageId).put(updateImage).delete(deleteImage)
 
 module.exports = router
 

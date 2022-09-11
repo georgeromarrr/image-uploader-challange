@@ -6,7 +6,19 @@ const Image = require('../models/serverModel')
 // access: Private
 const getImage = asyncHandler( async (req, res) => {
   const image =  await Image.find({})
+  res.status(200).json(image)
+})
 
+// description: GET Image details by ID
+// routes: GET /api/images
+// access: Private
+const getImageId = asyncHandler( async (req, res) => {
+  const image = await Image.findById(req.params.id)
+
+  if(!image) {
+    res.status(400)
+    throw new Error('Image does not exist')
+  }
 
   res.status(200).json(image)
 })
@@ -43,7 +55,7 @@ const updateImage = asyncHandler( async (req, res) => {
   const imageUpdated = await Image.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   })
-  
+
   res.status(200).json(imageUpdated)
 })
 
@@ -51,11 +63,21 @@ const updateImage = asyncHandler( async (req, res) => {
 // routes: DELETE /api/images/:id
 // access: Private
 const deleteImage = asyncHandler( async (req, res) => {
-  res.status(200).json({message: `Delete Image ${req.params.id}`})
+  const image = await Image.findById(req.params.id)
+
+  if(!image) {
+    res.status(400)
+    throw new Error('Image does not exist')
+  }
+
+  await image.remove()
+
+  res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
   getImage,
+  getImageId,
   createImage,
   updateImage,
   deleteImage,
